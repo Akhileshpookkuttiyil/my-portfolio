@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background Colors */
+    --color-background: #020617; /* slate-950 */
+    --color-foreground: #f8fafc; /* slate-50 */
+    --color-card: #1e293b; /* slate-800 */
+    --color-card-foreground: #f8fafc; /* slate-50 */
+    --color-popover: #1e293b; /* slate-800 */
+    --color-popover-foreground: #f8fafc; /* slate-50 */
+    
+    /* Primary Colors */
+    --color-primary: #0f172a; /* slate-900 */
+    --color-primary-foreground: #f8fafc; /* slate-50 */
+    --color-secondary: #1e293b; /* slate-800 */
+    --color-secondary-foreground: #f8fafc; /* slate-50 */
+    
+    /* Accent Colors */
+    --color-accent: #06b6d4; /* cyan-500 */
+    --color-accent-foreground: #f8fafc; /* slate-50 */
+    
+    /* Muted Colors */
+    --color-muted: #334155; /* slate-700 */
+    --color-muted-foreground: #94a3b8; /* slate-400 */
+    
+    /* Border and Input */
+    --color-border: #334155; /* slate-700 */
+    --color-input: #1e293b; /* slate-800 */
+    --color-ring: #06b6d4; /* cyan-500 */
+    
+    /* Status Colors */
+    --color-destructive: #ef4444; /* red-500 */
+    --color-destructive-foreground: #f8fafc; /* slate-50 */
+    --color-success: #10b981; /* emerald-500 */
+    --color-success-foreground: #f8fafc; /* slate-50 */
+    --color-warning: #f59e0b; /* amber-500 */
+    --color-warning-foreground: #f8fafc; /* slate-50 */
+    --color-error: #ef4444; /* red-500 */
+    --color-error-foreground: #f8fafc; /* slate-50 */
+    
+    /* Additional Theme Colors */
+    --color-surface: #334155; /* slate-700 */
+    --color-text-primary: #f8fafc; /* slate-50 */
+    --color-text-secondary: #94a3b8; /* slate-400 */
+    --color-conversion-accent: #ff6b35; /* orange-500 */
+    --color-conversion-accent-foreground: #f8fafc; /* slate-50 */
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+  
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-conversion-accent bg-clip-text text-transparent;
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 0 20px rgba(6, 182, 212, 0.1);
+  }
+  
+  .shadow-dramatic {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 0 40px rgba(6, 182, 212, 0.2);
+  }
+  
+  .transition-smooth {
+    transition: all 0.3s ease-out;
+  }
+  
+  .transition-micro {
+    transition: all 0.2s ease-out;
+  }
+  
+  .transition-story {
+    transition: all 0.4s ease-in-out;
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+}
