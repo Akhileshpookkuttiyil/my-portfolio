@@ -93,6 +93,8 @@ module.exports = {
         "pulse-glow": "pulseGlow 2s ease-in-out infinite",
         float: "float 3s ease-in-out infinite",
         typewriter: "typewriter 3s steps(40) infinite",
+        "border-spin": "borderSpin 1.5s linear infinite",
+        blink: "blink 1.2s infinite",
       },
       keyframes: {
         fadeIn: {
@@ -123,6 +125,34 @@ module.exports = {
           "0%": { width: "0" },
           "50%": { width: "100%" },
           "100%": { width: "0" },
+        },
+        borderSpin: {
+          "0%": {
+            borderColor:
+              "transparent transparent transparent var(--color-accent)",
+            transform: "rotate(0deg)",
+          },
+          "25%": {
+            borderColor:
+              "transparent transparent var(--color-accent) transparent",
+          },
+          "50%": {
+            borderColor:
+              "transparent var(--color-accent) transparent transparent",
+          },
+          "75%": {
+            borderColor:
+              "var(--color-accent) transparent transparent transparent",
+          },
+          "100%": {
+            borderColor:
+              "transparent transparent transparent var(--color-accent)",
+            transform: "rotate(360deg)",
+          },
+        },
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
         },
       },
       backdropBlur: {

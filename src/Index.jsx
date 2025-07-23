@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "./components/UI/Header";
 import HeroSection from "./pages/HomePage/HeroSection";
+import InteractiveCodeDemo from "./pages/HomePage/components/InteractiveCodeDemo";
 
 const Home = () => {
   useEffect(() => {
@@ -23,7 +24,10 @@ const Home = () => {
       <Header />
       {/* Main Content */}
       <main className="relative">
+        {/* Hero Section */}
         <HeroSection />
+        {/* Interactive Code Demo */}
+        <InteractiveCodeDemo />
       </main>
     </div>
   );
