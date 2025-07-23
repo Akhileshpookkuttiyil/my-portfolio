@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Header from "./components/UI/Header";
+import HeroSection from "./pages/HomePage/HeroSection";
 
 const Home = () => {
   useEffect(() => {
@@ -19,7 +20,11 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Header/>
+      <Header />
+      {/* Main Content */}
+      <main className="relative">
+        <HeroSection />
+      </main>
     </div>
   );
 };

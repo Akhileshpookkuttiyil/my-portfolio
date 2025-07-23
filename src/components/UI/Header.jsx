@@ -11,7 +11,7 @@ const Header = () => {
   const activePath = location.pathname;
 
   const navigationItems = [
-    { name: "Home", path: "/home", icon: "Home" },
+    { name: "Home", path: "/", icon: "Home" },
     {
       name: "Projects",
       path: "/projects",
@@ -48,7 +48,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 px-4 lg:px-6">
           {/* Logo */}
           <Link
-            to="/homepage-interactive-developer-hub"
+            to="/"
             className="flex items-center space-x-2 group transition-smooth"
             onClick={closeMenu}
           >
@@ -61,17 +61,16 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-16">
+          <nav className="hidden lg:flex items-center space-x-14">
             {navigationItems.map((item) => {
               const isActive = activePath === item.path;
               return (
-                <div>
+                <div key={item.path}>
                   <Link
-                    key={item.path}
                     to={item.path}
                     className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 group ${
                       isActive
-                        ? "text-accent bg-accent/10"
+                        ? "text-foreground bg-accent/10"
                         : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     }`}
                     onClick={closeMenu}
