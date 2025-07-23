@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Header from "./components/UI/Header";
 import HeroSection from "./pages/HomePage/HeroSection";
 import InteractiveCodeDemo from "./pages/HomePage/components/InteractiveCodeDemo";
+import FeaturedProjects from "./pages/HomePage/components/FeaturedProjects";
 
 const Home = () => {
   useEffect(() => {
@@ -28,6 +29,7 @@ const Home = () => {
         <HeroSection />
         {/* Interactive Code Demo */}
         <InteractiveCodeDemo />
+        <FeaturedProjects />
       </main>
     </div>
   );

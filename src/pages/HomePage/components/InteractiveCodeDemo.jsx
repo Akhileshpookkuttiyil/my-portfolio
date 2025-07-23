@@ -73,6 +73,8 @@ module.exports = router;`,
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
+  firstName: { type: String, trim: true },
+  lastName: { type: String, trim: true },
   email: {
     type: String,
     required: true,
@@ -82,8 +84,6 @@ const userSchema = new mongoose.Schema({
     match: [/^\\S+@\\S+\\.\\S+$/, 'Invalid email'],
   },
   passwordHash: { type: String, required: true, minlength: 6 },
-  firstName: { type: String, trim: true },
-  lastName: { type: String, trim: true },
   createdAt: { type: Date, default: Date.now },
 });
 
