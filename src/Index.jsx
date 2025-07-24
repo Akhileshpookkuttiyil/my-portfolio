@@ -29,6 +29,7 @@ const Home = () => {
         <HeroSection />
         {/* Interactive Code Demo */}
         <InteractiveCodeDemo />
+        {/* FeaturedProjects */}
         <FeaturedProjects />
       </main>
     </div>

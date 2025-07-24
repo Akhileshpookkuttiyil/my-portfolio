@@ -159,9 +159,9 @@ const ProjectCard = ({ project, isHovered, setHovered }) => {
 
         {/* CTA buttons */}
         <div className="flex items-center space-x-3">
-          <MagneticButton className="px-4 py-2 border border-border bg-background text-white rounded-md text-sm hover:brightness-110 hover:border-accent transition">
+          <MagneticButton className="px-4 py-2 border border-border text-white rounded-md text-sm hover:brightness-110 hover:border-accent transition">
             <Icon name="Eye" size={14} className="inline-block" />
-            <span className="ml-2">View</span>
+            <span className="ml-1">View</span>
           </MagneticButton>
           <MagneticButton className="px-4 py-2 border border-border text-sm rounded-md hover:bg-muted/20 hover:border-accent transition">
             <Icon name="Github" size={14} />
