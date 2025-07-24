@@ -1,18 +1,14 @@
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 import { motion as Motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import Icon from "../../../components/AppIcon";
 import Image from "../../../components/AppImage";
 import Button from "../../../components/UI/Button";
-import { MagneticCard } from "../../../components/animations/MagneticButton";
+import MagneticButton from "../../../components/animations/MagneticButton";
 import { useScrollAnimation } from "../../../hooks/useScrollAnimation";
 
-const ProjectShowcase3D = React.lazy(() =>
-  import("../../../components/3D/ProjectShowcase3D")
-);
-
-// Move this to a separate file like `data/projects.js` in future
+// Example project data
 const projects = [
   {
     id: 1,
@@ -42,129 +38,153 @@ const projects = [
   },
 ];
 
-// Util: status badge color handler
+// Badge style handler
 const getStatusStyle = (status) => {
   switch (status) {
     case "Live":
       return "bg-success/20 text-success border-success/30";
     case "Client":
       return "bg-orange-100 text-orange-600 border-orange-300";
-    case "Personal":
     default:
       return "bg-muted/20 text-muted border-muted/30";
   }
 };
 
-const ProjectCard = ({ project, isHovered, setHovered }) => (
-  <MagneticCard
-    className="group relative bg-card border border-border rounded-xl overflow-hidden hover:shadow-dramatic transition-all"
-    onMouseEnter={() => setHovered(project.id)}
-    onMouseLeave={() => setHovered(null)}
-  >
-    {/* Image */}
-    <div className="relative h-48">
-      <Motion.div whileHover={{ scale: 1.05 }} className="w-full h-full">
-        <Image
-          src={project.image}
-          alt={project.title}
-          className="object-cover w-full h-full"
-        />
-      </Motion.div>
+// Project card
+const ProjectCard = ({ project, isHovered, setHovered }) => {
+  const [expanded, setExpanded] = useState(false);
+  const techsToShow = expanded
+    ? project.techStack
+    : project.techStack.slice(0, 3);
+  const hiddenCount = project.techStack.length - 3;
 
-      {/* Status */}
-      <div className="absolute top-4 left-4">
-        <span
-          className={`inline-flex items-center space-x-1 px-3 py-1 text-xs font-medium rounded-full backdrop-blur-sm border ${getStatusStyle(
-            project.status
-          )}`}
+  return (
+    <div
+      className="group relative bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 ease-out"
+      onMouseEnter={() => setHovered(project.id)}
+      onMouseLeave={() => setHovered(null)}
+    >
+      {/* Image */}
+      <div className="relative h-48 overflow-hidden">
+        <Motion.div
+          whileHover={{ scale: 1.03 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+          className="w-full h-full"
         >
-          <span
-            className={`w-1.5 h-1.5 rounded-full ${
-              project.status === "Live"
-                ? "bg-success"
-                : project.status === "Client"
-                ? "bg-orange-500"
-                : "bg-muted"
-            }`}
+          <Image
+            src={project.image}
+            alt={project.title}
+            className="object-cover w-full h-full"
           />
-          <span>{project.status}</span>
-        </span>
-      </div>
+        </Motion.div>
 
-      {/* Links */}
-      {isHovered && (
-        <div className="absolute top-4 right-4 flex space-x-2">
-          {[
-            { icon: "ExternalLink", href: project.demoUrl },
-            { icon: "Github", href: project.githubUrl },
-          ].map(({ icon, href }) => (
-            <a
-              key={icon}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-background/90 backdrop-blur-sm text-muted-foreground hover:text-accent transition"
-              aria-label={icon}
-            >
-              <Icon name={icon} size={16} />
-            </a>
-          ))}
-        </div>
-      )}
-    </div>
-
-    {/* Details */}
-    <div className="p-5">
-      <div className="mb-2">
-        <span className="text-xs font-medium text-accent uppercase">
-          {project.category}
-        </span>
-        <h3 className="text-lg font-bold text-foreground">{project.title}</h3>
-      </div>
-      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-        {project.description}
-      </p>
-
-      {/* Tech */}
-      <div className="flex flex-wrap gap-2 text-xs mb-3">
-        {project.techStack.slice(0, 3).map((tech) => (
+        {/* Status badge */}
+        <div className="absolute top-4 left-4">
           <span
-            key={tech}
-            className="px-2 py-1 rounded-md bg-muted/40 border border-border"
+            className={`inline-flex items-center space-x-1 px-3 py-1 text-xs font-medium rounded-full backdrop-blur-sm border ${getStatusStyle(
+              project.status
+            )}`}
           >
-            {tech}
+            <span
+              className={`w-1.5 h-1.5 rounded-full ${
+                project.status === "Live"
+                  ? "bg-success"
+                  : project.status === "Client"
+                  ? "bg-orange-500"
+                  : "bg-muted"
+              }`}
+            />
+            <span>{project.status}</span>
           </span>
-        ))}
-        {project.techStack.length > 3 && (
-          <span className="px-2 py-1 rounded-md bg-accent/10 text-accent border border-accent/30">
-            +{project.techStack.length - 3} more
-          </span>
+        </div>
+
+        {/* Hover icons */}
+        {isHovered && (
+          <div className="absolute top-4 right-4 flex space-x-2 z-10">
+            {[
+              { icon: "ExternalLink", href: project.demoUrl },
+              { icon: "Github", href: project.githubUrl },
+            ].map(({ icon, href }) => (
+              <MagneticButton
+                key={icon}
+                magneticStrength={0.3}
+                className="p-3 bg-muted/30 hover:bg-accent/30 text-muted-foreground hover:text-accent rounded-lg transition-colors"
+              >
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={icon}
+                >
+                  <Icon name={icon} size={18} />
+                </a>
+              </MagneticButton>
+            ))}
+          </div>
         )}
       </div>
 
-      <div className="flex items-center space-x-3">
-        <Button variant="default" size="sm" iconName="Eye">
-          View
-        </Button>
-        <Button variant="outline" size="sm" iconName="Github" />
+      {/* Card content */}
+      <div className="p-5">
+        <div className="mb-2">
+          <span className="text-xs font-medium text-accent uppercase">
+            {project.category}
+          </span>
+          <h3 className="text-lg font-bold text-foreground">{project.title}</h3>
+        </div>
+
+        <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+          {project.description}
+        </p>
+
+        {/* Tech stack */}
+        <div className="flex flex-wrap gap-2 text-xs mb-3">
+          {techsToShow.map((tech) => (
+            <span
+              key={tech}
+              className="px-2 py-1 rounded-md bg-muted/40 border border-border"
+            >
+              {tech}
+            </span>
+          ))}
+          {project.techStack.length > 3 && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="px-2 py-1 rounded-md bg-accent/10 text-accent border border-accent/30 hover:bg-accent/20 transition text-xs"
+            >
+              {expanded ? "Show Less" : `+${hiddenCount} more`}
+            </button>
+          )}
+        </div>
+
+        {/* CTA buttons */}
+        <div className="flex items-center space-x-3">
+          <MagneticButton className="px-4 py-2 border border-border bg-background text-white rounded-md text-sm hover:brightness-110 hover:border-accent transition">
+            <Icon name="Eye" size={14} className="inline-block" />
+            <span className="ml-2">View</span>
+          </MagneticButton>
+          <MagneticButton className="px-4 py-2 border border-border text-sm rounded-md hover:bg-muted/20 hover:border-accent transition">
+            <Icon name="Github" size={14} />
+          </MagneticButton>
+        </div>
       </div>
     </div>
-  </MagneticCard>
-);
+  );
+};
 
+// Main section
 const FeaturedProjects = () => {
   const [hovered, setHovered] = useState(null);
-  const [viewMode, setViewMode] = useState("grid");
-  const { ref, opacity, scale } = useScrollAnimation();
+  const { ref, opacity } = useScrollAnimation();
 
   return (
     <Motion.section
       ref={ref}
-      style={{ opacity, scale }}
-      initial={{ opacity: 0, y: 40 }}
+      style={{ opacity }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
       className="py-20 bg-background"
     >
       <div className="container mx-auto px-4 lg:px-6 max-w-6xl">
@@ -192,68 +212,50 @@ const FeaturedProjects = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             Showcasing innovative solutions built with modern technologies.
           </p>
-
-          {/* Toggle */}
-          <div className="flex justify-center space-x-2">
-            {["grid", "3d"].map((mode) => (
-              <button
-                key={mode}
-                onClick={() => setViewMode(mode)}
-                aria-label={`Switch to ${mode} view`}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 ${
-                  viewMode === mode
-                    ? "bg-accent text-white"
-                    : "bg-muted text-muted-foreground hover:bg-accent/10"
-                }`}
-              >
-                <Icon
-                  name={mode === "grid" ? "LayoutGrid" : "Cube"}
-                  size={16}
-                />
-                {mode === "grid" ? "Grid View" : "3D View"}
-              </button>
-            ))}
-          </div>
         </div>
 
-        {/* Content */}
-        {viewMode === "grid" ? (
-          <Motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, i) => (
-              <Motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.4 }}
-              >
-                <ProjectCard
-                  project={project}
-                  isHovered={hovered === project.id}
-                  setHovered={setHovered}
-                />
-              </Motion.div>
-            ))}
-          </Motion.div>
-        ) : (
-          <Suspense
-            fallback={
-              <div className="flex items-center justify-center h-[600px] bg-gradient-to-br from-accent/10 to-conversion-accent/10 rounded-xl">
-                <Motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="w-12 h-12 border-4 border-accent border-t-transparent rounded-full"
-                />
-              </div>
-            }
-          >
-            <div className="h-[600px] rounded-xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm">
-              <ProjectShowcase3D projects={projects} />
-            </div>
-          </Suspense>
-        )}
+        {/* Project grid */}
+        <Motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.08 },
+            },
+          }}
+        >
+          {projects.map((project) => (
+            <Motion.div
+              key={project.id}
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.4, ease: "easeOut" },
+                },
+              }}
+            >
+              <ProjectCard
+                project={project}
+                isHovered={hovered === project.id}
+                setHovered={setHovered}
+              />
+            </Motion.div>
+          ))}
+        </Motion.div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        <Motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+          viewport={{ once: true }}
+        >
           <Link to="/project-case-studies-portfolio">
             <Button
               variant="outline"
@@ -265,7 +267,7 @@ const FeaturedProjects = () => {
               View All Projects
             </Button>
           </Link>
-        </div>
+        </Motion.div>
       </div>
     </Motion.section>
   );
