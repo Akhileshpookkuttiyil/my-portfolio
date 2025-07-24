@@ -3,6 +3,7 @@ import Header from "./components/UI/Header";
 import HeroSection from "./pages/HomePage/HeroSection";
 import InteractiveCodeDemo from "./pages/HomePage/components/InteractiveCodeDemo";
 import FeaturedProjects from "./pages/HomePage/components/FeaturedProjects";
+import SkillsPreview from "./pages/HomePage/components/SkillsPreview";
 
 const Home = () => {
   useEffect(() => {
@@ -31,6 +32,8 @@ const Home = () => {
         <InteractiveCodeDemo />
         {/* FeaturedProjects */}
         <FeaturedProjects />
+        {/* SkillsPreview */}
+        <SkillsPreview />
       </main>
     </div>
   );
