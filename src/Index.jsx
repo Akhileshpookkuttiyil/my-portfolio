@@ -4,6 +4,7 @@ import HeroSection from "./pages/HomePage/HeroSection";
 import InteractiveCodeDemo from "./pages/HomePage/components/InteractiveCodeDemo";
 import FeaturedProjects from "./pages/HomePage/components/FeaturedProjects";
 import SkillsPreview from "./pages/HomePage/components/SkillsPreview";
+import ContactCTA from "./pages/HomePage/components/ContactCTA";
 
 const Home = () => {
   useEffect(() => {
@@ -34,6 +35,8 @@ const Home = () => {
         <FeaturedProjects />
         {/* SkillsPreview */}
         <SkillsPreview />
+        {/* Contact CTA */}
+        <ContactCTA />
       </main>
     </div>
   );
