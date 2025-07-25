@@ -1,8 +1,23 @@
 import React from "react";
+import { motion as Motion } from "framer-motion";
 import Image from "../../../components/AppImage";
 import Icon from "../../../components/AppIcon";
 import Button from "../../../components/UI/Button";
 import profileImage from "../../../assets/images/profile.png";
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const AboutIntroSection = () => {
   const handleSmoothScroll = () => {
@@ -17,18 +32,24 @@ const AboutIntroSection = () => {
       id="about"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 scroll-smooth pb-5"
     >
-      {/* Background Elements */}
+      {/* Blurred Background Elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-accent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-conversion-accent rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-accent to-conversion-accent rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-accent rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-conversion-accent rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-accent to-conversion-accent rounded-full blur-3xl opacity-20" />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-6">
+      <Motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-6"
+      >
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content Side */}
+          {/* Text Content */}
           <div className="text-center lg:text-left space-y-8">
-            <div className="space-y-4">
+            <Motion.div variants={fadeInUp} className="space-y-4">
               <div className="inline-flex items-center px-4 py-2 bg-accent/10 border border-accent/20 rounded-full text-accent text-sm font-medium">
                 <Icon name="Code2" size={16} className="mr-2" />
                 Full-Stack Developer & Problem Solver
@@ -43,10 +64,13 @@ const AboutIntroSection = () => {
                 Bridging technical excellence with collaborative problem-solving
                 to create digital experiences that matter.
               </p>
-            </div>
+            </Motion.div>
 
-            {/* Philosophy Statement */}
-            <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 lg:p-8 space-y-4">
+            {/* Philosophy Card */}
+            <Motion.div
+              variants={fadeInUp}
+              className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 lg:p-8 space-y-4"
+            >
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-r from-accent to-conversion-accent rounded-lg flex items-center justify-center">
                   <Icon name="Lightbulb" size={20} color="white" />
@@ -61,12 +85,15 @@ const AboutIntroSection = () => {
                 bridges between complex technical solutions and human needs.
                 Every line of code should serve a purpose, every feature should
                 add value, and every project should leave the world a little bit
-                better."
+                better"
               </p>
-            </div>
+            </Motion.div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-4 lg:gap-6">
+            {/* Stats */}
+            <Motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-3 gap-4 lg:gap-6"
+            >
               {[
                 { value: "1+", label: "Year Experience" },
                 { value: "25+", label: "Projects Delivered" },
@@ -81,10 +108,13 @@ const AboutIntroSection = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </Motion.div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <Motion.div
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
               <Button
                 variant="default"
                 size="lg"
@@ -102,14 +132,17 @@ const AboutIntroSection = () => {
               >
                 Let's Connect
               </Button>
-            </div>
+            </Motion.div>
           </div>
 
           {/* Image Side */}
-          <div className="relative flex justify-center lg:justify-end">
+          <Motion.div
+            variants={fadeInUp}
+            className="relative flex justify-center lg:justify-end"
+          >
             <div className="relative">
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-dramatic">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-conversion-accent/20 z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-conversion-accent/20 z-10" />
                 <Image
                   src={profileImage}
                   alt="Akhilesh P - Full-Stack Developer"
@@ -119,17 +152,37 @@ const AboutIntroSection = () => {
               </div>
 
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-16 h-14 bg-gradient-to-r from-accent to-conversion-accent rounded-2xl flex items-center justify-center shadow-glow animate-bounce">
+              <Motion.div
+                initial={{ y: -10 }}
+                animate={{ y: 10 }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 2,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                }}
+                className="absolute -top-4 -right-4 w-16 h-14 bg-gradient-to-r from-accent to-conversion-accent rounded-2xl flex items-center justify-center shadow-glow"
+              >
                 <Icon name="Code" size={20} color="white" />
-              </div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-card border border-border rounded-xl flex items-center justify-center shadow-glow">
+              </Motion.div>
+              <Motion.div
+                initial={{ y: 10 }}
+                animate={{ y: -10 }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 2.2,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                }}
+                className="absolute -bottom-4 -left-4 w-16 h-16 bg-card border border-border rounded-xl flex items-center justify-center shadow-glow"
+              >
                 <Icon name="Coffee" size={20} className="text-accent" />
-              </div>
-              <div className="absolute -inset-8 bg-gradient-to-r from-accent/10 to-conversion-accent/10 rounded-3xl -z-10 blur-xl"></div>
+              </Motion.div>
+              <div className="absolute -inset-8 bg-gradient-to-r from-accent/10 to-conversion-accent/10 rounded-3xl -z-10 blur-xl" />
             </div>
-          </div>
+          </Motion.div>
         </div>
-      </div>
+      </Motion.div>
 
       {/* Scroll Indicator */}
       <div
