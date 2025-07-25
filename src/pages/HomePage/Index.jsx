@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import Header from "./components/UI/Header";
-import HeroSection from "./pages/HomePage/components/HeroSection";
-import InteractiveCodeDemo from "./pages/HomePage/components/InteractiveCodeDemo";
-import FeaturedProjects from "./pages/HomePage/components/FeaturedProjects";
-import SkillsPreview from "./pages/HomePage/components/SkillsPreview";
-import ContactCTA from "./pages/HomePage/components/ContactCTA";
-import Footer from "./components/UI/Footer";
+import Header from "../../components/UI/Header";
+import HeroSection from "./components/HeroSection";
+import InteractiveCodeDemo from "./components/InteractiveCodeDemo";
+import FeaturedProjects from "./components/FeaturedProjects";
+import SkillsPreview from "./components/SkillsPreview";
+import ContactCTA from "./components/ContactCTA";
+import Footer from "../../components/UI/Footer";
 
 const Home = () => {
   useEffect(() => {
