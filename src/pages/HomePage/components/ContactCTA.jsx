@@ -34,7 +34,7 @@ const ContactCTA = () => {
       description: "Book a free consultation",
       value: "30-min discovery call",
       action: "Book Now",
-      href: "#", 
+      href: "#",
       color: "text-conversion-accent",
     },
     {
@@ -108,26 +108,32 @@ const ContactCTA = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
             >
-              <Link to="/contact-collaboration-hub">
+              <Link
+                to="/contact-collaboration-hub"
+                className="w-full sm:w-auto"
+              >
                 <Button
                   variant="default"
                   size="lg"
                   iconName="MessageCircle"
                   iconPosition="left"
-                  className="bg-gradient-to-r from-accent to-conversion-accent hover:from-accent/90 hover:to-conversion-accent/90 shadow-glow"
+                  className="w-full sm:w-auto bg-gradient-to-r from-accent to-conversion-accent hover:from-accent/90 hover:to-conversion-accent/90 shadow-glow"
                 >
                   Start a Project
                 </Button>
               </Link>
-              <Button
-                variant="outline"
-                size="lg"
-                iconName="Calendar"
-                iconPosition="left"
-                className="hover:bg-accent/10 hover:border-accent hover:text-accent"
-              >
-                Schedule Consultation
-              </Button>
+
+              <Link to="/schedule-consultation" className="w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  iconName="Calendar"
+                  iconPosition="left"
+                  className="w-full sm:w-auto hover:bg-accent/10 hover:border-accent hover:text-accent"
+                >
+                  Schedule Consultation
+                </Button>
+              </Link>
             </Motion.div>
           </div>
 
