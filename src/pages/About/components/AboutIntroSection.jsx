@@ -119,8 +119,8 @@ const AboutIntroSection = () => {
               </div>
 
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-accent to-conversion-accent rounded-2xl flex items-center justify-center shadow-glow animate-bounce">
-                <Icon name="Code" size={24} color="white" />
+              <div className="absolute -top-4 -right-4 w-16 h-14 bg-gradient-to-r from-accent to-conversion-accent rounded-2xl flex items-center justify-center shadow-glow animate-bounce">
+                <Icon name="Code" size={20} color="white" />
               </div>
               <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-card border border-border rounded-xl flex items-center justify-center shadow-glow">
                 <Icon name="Coffee" size={20} className="text-accent" />
