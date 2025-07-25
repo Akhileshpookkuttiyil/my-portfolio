@@ -15,7 +15,7 @@ const AboutIntroSection = () => {
   return (
     <section
       id="about"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 scroll-smooth"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 scroll-smooth pb-5"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
@@ -113,7 +113,7 @@ const AboutIntroSection = () => {
                 <Image
                   src={profileImage}
                   alt="Akhilesh P - Full-Stack Developer"
-                  className="w-full h-full object-right"
+                  className="w-full h-full object-fill"
                   loading="lazy"
                 />
               </div>
