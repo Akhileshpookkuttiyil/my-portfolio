@@ -17,7 +17,7 @@ const Header = () => {
       path: "/projects",
       icon: "FolderOpen",
     },
-    { name: "About", path: "about", icon: "User" },
+    { name: "About", path: "/about", icon: "User" },
     {
       name: "Contact",
       path: "/contact",

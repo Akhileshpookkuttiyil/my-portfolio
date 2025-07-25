@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion as Motion } from "framer-motion";
-import Icon from "../../components/AppIcon";
-import MagneticButton from "../../components/animations/MagneticButton";
-import { FloatingElement } from "../../components/animations/ParallaxSection";
+import Icon from "../../../components/AppIcon";
+import MagneticButton from "../../../components/animations/MagneticButton";
+import { FloatingElement } from "../../../components/animations/ParallaxSection";
 
 const roles = [
   "Full-Stack Web Developer (MERN)",
