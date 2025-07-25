@@ -5,10 +5,17 @@ import Button from "../../../components/UI/Button";
 import profileImage from "../../../assets/images/profile.png";
 
 const AboutIntroSection = () => {
+  const handleSmoothScroll = () => {
+    const nextSection = document.getElementById("experience");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="about"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 scroll-smooth"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
@@ -101,13 +108,13 @@ const AboutIntroSection = () => {
           {/* Image Side */}
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative">
-              {/* Main Image Container */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-dramatic">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-conversion-accent/20 z-10"></div>
                 <Image
                   src={profileImage}
                   alt="Akhilesh P - Full-Stack Developer"
                   className="w-full h-full object-right"
+                  loading="lazy"
                 />
               </div>
 
@@ -125,7 +132,10 @@ const AboutIntroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div
+        onClick={handleSmoothScroll}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+      >
         <div className="flex flex-col items-center space-y-2 text-muted-foreground">
           <span className="text-sm">Scroll to know more</span>
           <Icon name="ChevronDown" size={20} />
