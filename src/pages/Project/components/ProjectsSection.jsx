@@ -14,7 +14,7 @@ const projectData = [
     id: 1,
     title: "FoodieMania",
     description:
-      "Scalable full-stack food delivery platform supporting multi-role access (User, Seller, Admin), real-time cart sync, secure JWT auth, and integrated Stripe/COD payments. Designed for 1000+ concurrent users with mobile responsiveness and lazy-loaded resources.",
+      "Scalable full-stack food delivery platform supporting multi-role access (User, Seller, Admin), real-time cart sync, secure JWT auth, and integrated Stripe/COD payments. Built with mobile responsiveness and lazy-loaded resources for performance.",
     image: foodiemania,
     techStack: [
       "React",
@@ -41,24 +41,31 @@ const projectData = [
         "Stripe & COD Checkout Flows",
         "Advanced Search & Filtering",
         "Admin Analytics Dashboard",
+        "Email Verification via Nodemailer",
       ],
       challenges:
         "Secure session management, sync across tabs without WebSockets, performance optimization for multi-role views.",
-      apis: ["Stripe", "Cloudinary", "MongoDB Atlas", "Google Geolocation API"],
+      apis: [
+        "Stripe",
+        "Cloudinary",
+        "MongoDB Atlas",
+        "Nominatim",
+        "Nodemailer",
+      ],
     },
   },
   {
     id: 2,
     title: "InstaBasket",
     description:
-      "Responsive grocery e-commerce app with live inventory, delivery slot booking, order tracking, and real-time stock updates. Built for 1000+ SKUs with category-based filtering and modular backend controllers for scalable retail environments.",
+      "Responsive grocery e-commerce app where users can browse server-added products, add them to cart, and securely purchase using Stripe payments. Features category filtering, cart persistence, and basic order management.",
     image: instabasket,
     techStack: [
       "React",
       "Node.js",
       "Express",
       "MongoDB",
-      "Razorpay",
+      "Stripe",
       "Tailwind CSS",
       "Multer",
       "Cloudinary",
@@ -72,22 +79,23 @@ const projectData = [
     details: {
       role: "Fullstack Developer",
       features: [
-        "Live Inventory Sync",
-        "Delivery Slot Booking",
-        "Product Filters & Search",
-        "Order Status Management",
-        "Secure Payments with Razorpay",
+        "Server-side Product Management",
+        "User Cart and Order Flow",
+        "Stripe Payment Integration",
+        "Category Filtering and Search",
+        "Basic Order Status View",
+        "Email Verification via Nodemailer",
       ],
       challenges:
-        "Built real-time stock recalculations, delivery slot overlap prevention, and multi-admin order processing.",
-      apis: ["Razorpay", "MongoDB Atlas", "Cloudinary"],
+        "Handled secure payment integration, form validations, and cart persistence across page reloads.",
+      apis: ["Stripe", "MongoDB Atlas", "Cloudinary", "Nodemailer"],
     },
   },
   {
     id: 3,
     title: "PureFarmFoods",
     description:
-      "Server-side rendered organic grocery marketplace using Express + EJS. Supports vendor-based product listing, geo-matching customers to nearest farms, admin-controlled onboarding, and localized delivery management.",
+      "Server-side rendered multi-role web application for managing an organic product marketplace. Features role-based dashboards for users, sellers, and admins with secure product listing, order tracking, and admin-level moderation.",
     image: purefarmfoods,
     techStack: [
       "Node.js",
@@ -100,6 +108,8 @@ const projectData = [
       "Cloudinary",
       "JWT",
       "Cookie-Parser",
+      "Twilio",
+      "Nodemailer",
     ],
     category: "Fullstack",
     status: "Personal",
@@ -108,15 +118,16 @@ const projectData = [
     details: {
       role: "Fullstack Developer",
       features: [
-        "Geo-based Vendor Matching",
-        "Multi-role Dashboards",
-        "Secure Checkout with Razorpay",
-        "EJS Views with Dynamic Logic",
-        "Vendor Onboarding System",
+        "Role-based Web Interface (User, Seller, Admin)",
+        "Admin Product & Seller Approval System",
+        "Twilio SMS Phone Verification",
+        "Nodemailer Email Verification",
+        "Dynamic EJS Templates for Views",
+        "Invoice Generation & Order Tracking",
       ],
       challenges:
-        "Designed geolocation-based product visibility, reusable EJS partials, and strict session-controlled access by role.",
-      apis: ["Razorpay", "MongoDB Atlas", "Google Maps API", "Cloudinary"],
+        "Built secure approval workflows, integrated dual-verification flows, and handled role-based UI with reusable EJS components.",
+      apis: ["Razorpay", "MongoDB Atlas", "Cloudinary", "Twilio", "Nodemailer"],
     },
   },
 ];

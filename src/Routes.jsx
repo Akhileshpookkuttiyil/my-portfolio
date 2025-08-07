@@ -3,10 +3,12 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Project from "./pages/Project";
 import Home from "./pages/HomePage/Index";
+import ScrollToTop from "./components/UI/ScrollToTop";
 
 const Routes = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <RouterRoutes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Project />} />

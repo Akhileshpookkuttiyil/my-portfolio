@@ -7,34 +7,48 @@ import Image from "../../../components/AppImage";
 import Button from "../../../components/UI/Button";
 import MagneticButton from "../../../components/animations/MagneticButton";
 import { useScrollAnimation } from "../../../hooks/useScrollAnimation";
+import foodiemania from "../../../assets/images/foodiemania.png";
+import instabasket from "../../../assets/images/instabasket.png";
 
 // Example project data
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "FoodieMania",
     description:
-      "Full-stack e-commerce solution with real-time inventory, payments, and admin dashboard.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-    techStack: ["React", "Node.js", "MongoDB", "Stripe", "AWS"],
+      "Full-stack food delivery app with multi-role access, real-time cart sync, and Stripe/COD checkout.",
+    image: foodiemania,
+    techStack: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Stripe",
+      "Tailwind CSS",
+    ],
     category: "Full-Stack",
     status: "Personal",
-    demoUrl: "#",
-    githubUrl: "#",
+    demoUrl: "https://food-app-one-rho.vercel.app",
+    githubUrl: "https://github.com/Akhileshpookkuttiyil/FoodApp",
   },
   {
     id: 2,
-    title: "AI Analytics Dashboard",
+    title: "InstaBasket",
     description:
-      "Real-time visualizations with ML insights and predictive analytics.",
-    image:
-      "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?w=600&h=400&fit=crop",
-    techStack: ["React", "Python", "TensorFlow", "D3.js", "PostgreSQL"],
-    category: "Data Science",
-    status: "Client",
-    demoUrl: "#",
-    githubUrl: "#",
+      "Grocery e-commerce app with product filtering, Stripe checkout, and cart persistence.",
+    image: instabasket,
+    techStack: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Stripe",
+      "Tailwind CSS",
+    ],
+    category: "Full-Stack",
+    status: "Personal",
+    demoUrl: "https://insta-basket.vercel.app",
+    githubUrl: "https://github.com/Akhileshpookkuttiyil/InstaBasket",
   },
 ];
 
@@ -158,14 +172,19 @@ const ProjectCard = ({ project, isHovered, setHovered }) => {
         </div>
 
         {/* CTA buttons */}
-        <div className="flex items-center space-x-3">
-          <MagneticButton className="px-4 py-2 border border-border text-white rounded-md text-sm hover:brightness-110 hover:border-accent transition">
-            <Icon name="Eye" size={14} className="inline-block" />
-            <span className="ml-1">View</span>
-          </MagneticButton>
-          <MagneticButton className="px-4 py-2 border border-border text-sm rounded-md hover:bg-muted/20 hover:border-accent transition">
-            <Icon name="Github" size={14} />
-          </MagneticButton>
+        <div className="flex space-x-3 mb-3">
+          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+            <MagneticButton className="px-4 py-2 border border-border text-white rounded-md text-sm hover:brightness-110 hover:border-accent transition">
+              <Icon name="Eye" size={14} className="inline-block" />
+              <span className="ml-1">View</span>
+            </MagneticButton>
+          </a>
+
+          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+            <MagneticButton className="px-4 py-2 border border-border text-sm rounded-md hover:bg-muted/20 hover:border-accent transition">
+              <Icon name="Github" size={14} />
+            </MagneticButton>
+          </a>
         </div>
       </div>
     </div>
@@ -256,7 +275,7 @@ const FeaturedProjects = () => {
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <Link to="/project-case-studies-portfolio">
+          <Link to="/projects">
             <Button
               variant="outline"
               size="lg"
