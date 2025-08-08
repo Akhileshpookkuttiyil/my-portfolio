@@ -28,7 +28,7 @@ const projects = [
     ],
     category: "Full-Stack",
     status: "Personal",
-    demoUrl: "https://food-app-one-rho.vercel.app",
+    demoUrl: "https://foodiemania.vercel.app",
     githubUrl: "https://github.com/Akhileshpookkuttiyil/FoodApp",
   },
   {

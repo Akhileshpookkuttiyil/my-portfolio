@@ -31,7 +31,7 @@ const projectData = [
     ],
     category: "Fullstack",
     status: "Personal",
-    demoUrl: "https://food-app-one-rho.vercel.app",
+    demoUrl: "https://foodiemania.vercel.app",
     githubUrl: "https://github.com/Akhileshpookkuttiyil/FoodApp",
     details: {
       role: "Fullstack Developer",
@@ -113,7 +113,7 @@ const projectData = [
     ],
     category: "Fullstack",
     status: "Personal",
-    demoUrl: "https://purefarmfoods-production.up.railway.app",
+    demoUrl: "https://purefarmfoods.railway.app",
     githubUrl: "https://github.com/Akhileshpookkuttiyil/PureFarmFoods",
     details: {
       role: "Fullstack Developer",
