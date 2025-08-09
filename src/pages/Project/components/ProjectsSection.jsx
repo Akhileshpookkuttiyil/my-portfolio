@@ -113,7 +113,7 @@ const projectData = [
     ],
     category: "Fullstack",
     status: "Personal",
-    demoUrl: "https://purefarmfoods.railway.app",
+    demoUrl: "https://purefarmfoods.up.railway.app",
     githubUrl: "https://github.com/Akhileshpookkuttiyil/PureFarmFoods",
     details: {
       role: "Fullstack Developer",
